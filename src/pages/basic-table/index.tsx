@@ -61,7 +61,7 @@ const data: Person[] = [
   },
 ];
 
-const Home = () => {
+const Basic = () => {
   //should be memoized or stable
   const columns = useMemo<MRT_ColumnDef<Person>[]>(
     () => [
@@ -97,4 +97,4 @@ const Home = () => {
   return <MaterialReactTable columns={columns} data={data} />;
 };
 
-export default Home;
+export default Basic;
