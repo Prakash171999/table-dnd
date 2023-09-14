@@ -51,30 +51,35 @@ const RowColumnDnd = () => {
 
   const [data, setData] = useState(() => initialData);
   return (
-    <MaterialReactTable
-      autoResetPageIndex={false}
-      columns={columns}
-      data={data}
-      enableRowOrdering
-      enableColumnOrdering
-      enableSorting={false}
-      defaultDisplayColumn={{ enableResizing: true }}
-      enableColumnResizing
-      enablePagination={false}
-      muiTableBodyRowDragHandleProps={({ table }) => ({
-        onDragEnd: () => {
-          const { draggingRow, hoveredRow } = table.getState();
-          if (hoveredRow && draggingRow) {
-            data.splice(
-              (hoveredRow as MRT_Row<any>).index,
-              0,
-              data.splice(draggingRow.index, 1)[0]
-            );
-            setData([...data]);
-          }
-        },
-      })}
-    />
+    <>
+      <h2 style={{ textAlign: "center", padding: "20px" }}>
+        <u>This <b>React Material UI table</b> row and column is dragable, column sortable and column resizeable</u>
+      </h2>
+      <MaterialReactTable
+        autoResetPageIndex={false}
+        columns={columns}
+        data={data}
+        enableRowOrdering
+        enableColumnOrdering
+        enableSorting={false}
+        defaultDisplayColumn={{ enableResizing: true }}
+        enableColumnResizing
+        enablePagination={false}
+        muiTableBodyRowDragHandleProps={({ table }) => ({
+          onDragEnd: () => {
+            const { draggingRow, hoveredRow } = table.getState();
+            if (hoveredRow && draggingRow) {
+              data.splice(
+                (hoveredRow as MRT_Row<any>).index,
+                0,
+                data.splice(draggingRow.index, 1)[0]
+              );
+              setData([...data]);
+            }
+          },
+        })}
+      />
+    </>
   );
 };
 

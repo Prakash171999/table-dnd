@@ -94,7 +94,14 @@ const Basic = () => {
     []
   );
 
-  return <MaterialReactTable columns={columns} data={data} />;
+  return (
+    <>
+      <h2 style={{ textAlign: "center", padding: "20px" }}>
+        <u>This is a basic <b>React Material UI table</b></u>
+      </h2>
+      <MaterialReactTable columns={columns} data={data} />
+    </>
+  );
 };
 
 export default Basic;
