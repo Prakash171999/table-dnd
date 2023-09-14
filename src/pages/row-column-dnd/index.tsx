@@ -1,9 +1,11 @@
 import {
   MaterialReactTable,
+  MRT_Virtualizer,
   type MRT_ColumnDef,
   type MRT_Row,
+  MRT_SortingState,
 } from "material-react-table";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { data as initialData } from "../../makeData";
 
 const RowColumnDnd = () => {
@@ -25,11 +27,27 @@ const RowColumnDnd = () => {
       {
         accessorKey: "email",
         header: "Email",
+        enableResizing: false, // Override the default behavior for this column
       },
     ],
     []
     //end
   );
+
+  //optionally access the underlying virtualizer instance
+  const rowVirtualizerInstanceRef =
+    useRef<MRT_Virtualizer<HTMLDivElement, HTMLTableRowElement>>(null);
+
+  const [sorting, setSorting] = useState<MRT_SortingState>([]);
+
+  useEffect(() => {
+    //scroll to the top of the table when the sorting changes
+    try {
+      rowVirtualizerInstanceRef.current?.scrollToIndex?.(0);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [sorting]);
 
   const [data, setData] = useState(() => initialData);
   return (
@@ -40,6 +58,9 @@ const RowColumnDnd = () => {
       enableRowOrdering
       enableColumnOrdering
       enableSorting={false}
+      defaultDisplayColumn={{ enableResizing: true }}
+      enableColumnResizing
+      enablePagination={false}
       muiTableBodyRowDragHandleProps={({ table }) => ({
         onDragEnd: () => {
           const { draggingRow, hoveredRow } = table.getState();
