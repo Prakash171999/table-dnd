@@ -33,6 +33,33 @@ const ExpandHideTable = () => {
       <h2 style={{ textAlign: "center", padding: "50px 20px" }}>
         This <b>React Material UI Table</b> with expandable and hideable rows
       </h2>
+      <MaterialReactTable
+        columns={columns}
+        data={data}
+        renderDetailPanel={({ row }) => (
+          <Box
+            sx={{
+              display: "grid",
+              margin: "auto",
+              gridTemplateColumns: "1fr 1fr",
+              width: "100%",
+            }}
+          >
+            <Typography>
+              <b>Address:</b> {row.original.address}
+            </Typography>
+            <Typography>
+              <b>City:</b> {row.original.city}
+            </Typography>
+            <Typography>
+              <b>State:</b> {row.original.state}
+            </Typography>
+            <Typography>
+              <b>Country:</b> {row.original.country}
+            </Typography>
+          </Box>
+        )}
+      />
     </>
   );
 };
