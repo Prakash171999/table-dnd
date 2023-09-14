@@ -24,6 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <a href={"/expand-hide-table"}>
           <u>{"Show/Hide Table Row"}</u>
         </a>
+        <a href={"all-feature-integration"}>
+          <u>{"All Feature Integration"}</u>
+        </a>
       </div>
       <Component {...pageProps} />
     </>
