@@ -97,7 +97,7 @@ const Basic = () => {
   return (
     <>
       <h2 style={{ textAlign: "center", padding: "20px" }}>
-        <u>This is a basic <b>React Material UI table</b></u>
+        This is a basic <b>React Material UI table</b>
       </h2>
       <MaterialReactTable columns={columns} data={data} />
     </>

@@ -15,8 +15,15 @@ export default function App({ Component, pageProps }: AppProps) {
           fontWeight: "bold",
         }}
       >
-        <a href={"/basic-table"}>{"Basic Table"}</a>
-        <a href={"/row-column-dnd"}>{"Row Column Dnd Table"}</a>
+        <a href={"/basic-table"}>
+          <u>{"Basic Table"}</u>
+        </a>
+        <a href={"/row-column-dnd"}>
+          <u>{"Row Column Dnd Table"}</u>
+        </a>
+        <a href={"/expand-hide-table"}>
+          <u>{"Show/Hide Table Row"}</u>
+        </a>
       </div>
       <Component {...pageProps} />
     </>

@@ -52,8 +52,9 @@ const RowColumnDnd = () => {
   const [data, setData] = useState(() => initialData);
   return (
     <>
-      <h2 style={{ textAlign: "center", padding: "20px" }}>
-        <u>This <b>React Material UI table</b> row and column is dragable, column sortable and column resizeable</u>
+      <h2 style={{ textAlign: "center", padding: "50px 20px" }}>
+        This <b>React Material UI table</b> row and column is dragable, column
+        sortable and column resizeable
       </h2>
       <MaterialReactTable
         autoResetPageIndex={false}
